@@ -56,6 +56,7 @@ class AnimatedSvgPaths extends Component {
     Animated.sequence([
       Animated.delay(delay),
       Animated.timing(this.strokeDashoffset, {
+        delay: delay,
         toValue: 0,
         duration: duration,
         useNativeDriver: true
