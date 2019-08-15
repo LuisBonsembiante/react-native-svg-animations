@@ -54,7 +54,7 @@ class AnimatedSvgPaths extends Component {
     } = this.props;
     this.strokeDashoffset.setValue(this.length);
     Animated.sequence([
-      Animated.delay(delay),
+      //Animated.delay(delay),
       Animated.timing(this.strokeDashoffset, {
         delay: delay,
         toValue: 0,
