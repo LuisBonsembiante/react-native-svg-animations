@@ -1,9 +1,7 @@
-
 import React, {
   PureComponent, Component,
 } from 'react';
 import PropTypes from 'prop-types';
-import Svg from 'react-native-svg';
 import {
   Animated,
   Dimensions,
@@ -25,6 +23,7 @@ class AnimatedSvgPaths extends Component {
     delay: PropTypes.number,
     width: PropTypes.number,
     scale: PropTypes.number,
+    loop: PropTypes.bool
   };
 
   static defaultProps = {
@@ -36,6 +35,7 @@ class AnimatedSvgPaths extends Component {
     scale: 1,
     height,
     width,
+    loop: true
   };
 
   constructor(props) {
@@ -50,6 +50,7 @@ class AnimatedSvgPaths extends Component {
     const {
       delay,
       duration,
+      loop
     } = this.props;
     this.strokeDashoffset.setValue(this.length);
     Animated.sequence([
@@ -57,8 +58,13 @@ class AnimatedSvgPaths extends Component {
       Animated.timing(this.strokeDashoffset, {
         toValue: 0,
         duration: duration,
+        useNativeDriver: true
       })
-    ]).start(() => this.animate());
+    ]).start(() => {
+      if (loop) {
+        this.animate();
+      }
+    });
   }
 
   componentDidMount() {
