@@ -14,13 +14,13 @@ class AnimatedSvgPath extends Component {
   setNativeProps = (props = {}) => {
     this._component && this._component.setNativeProps(props);
   }
-  
+
   render() {
     return (
-      <Path
-        ref={component => (this._component = component)}
-        {...this.props}
-      />
+        <Path
+            ref={component => (this._component = component)}
+            {...this.props}
+        />
     );
   }
 }

@@ -27,7 +27,7 @@ class AnimatedSVGPath extends Component {
     fill: PropTypes.string,
     loop: PropTypes.bool
   };
-  
+
   static defaultProps = {
     strokeColor: "black",
     strokeWidth: 1,
@@ -39,7 +39,7 @@ class AnimatedSVGPath extends Component {
     width,
     loop: true
   };
-  
+
   constructor(props) {
     super(props);
     const { d } = this.props;
@@ -64,7 +64,7 @@ class AnimatedSVGPath extends Component {
       })
     ]).start(() => {
       if (loop) {
-          this.animate();
+        this.animate();
       }
     });
   }
@@ -72,7 +72,7 @@ class AnimatedSVGPath extends Component {
   componentDidMount() {
     this.animate();
   }
-  
+
   render() {
     const {
       d,
@@ -84,20 +84,20 @@ class AnimatedSVGPath extends Component {
       strokeWidth,
     } = this.props;
     return (
-      <Svg
-        height={(height * scale) + 5}
-        width={(width * scale) + 5}
-      >
-        <Path
-          strokeDasharray={[this.length, this.length]}
-          strokeDashoffset={this.strokeDashoffset}
-          strokeWidth={strokeWidth}
-          stroke={strokeColor}
-          scale={scale}
-          fill={fill}
-          d={d}
-        />
-      </Svg>
+        <Svg
+            height={(height * scale) + 5}
+            width={(width * scale) + 5}
+        >
+          <Path
+              strokeDasharray={[this.length, this.length]}
+              strokeDashoffset={this.strokeDashoffset}
+              strokeWidth={strokeWidth}
+              stroke={strokeColor}
+              scale={scale}
+              fill={fill}
+              d={d}
+          />
+        </Svg>
     );
   }
 }
