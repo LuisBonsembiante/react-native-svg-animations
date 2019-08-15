@@ -53,9 +53,16 @@ class AnimatedSvgPaths extends Component {
       loop
     } = this.props;
     this.strokeDashoffset.setValue(this.length);
-    setTimeout(() => Animated.sequence([
+    setTimeout(() =>
+            this.start(this.strokeDashoffset, loop),
+        delay);
+
+  }
+
+  start(strokeDashoffset){
+    Animated.sequence([
       //Animated.delay(delay),
-      Animated.timing(this.strokeDashoffset, {
+      Animated.timing(strokeDashoffset, {
         delay: delay,
         toValue: 0,
         duration: duration,
@@ -65,8 +72,7 @@ class AnimatedSvgPaths extends Component {
       if (loop) {
         this.animate();
       }
-    }),delay);
-
+    });
   }
 
   componentDidMount() {
